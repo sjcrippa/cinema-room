@@ -1,0 +1,10 @@
+Api key:
+
+a138c89b
+
+----------------------
+OMDB api:
+
+http://www.omdbapi.com/?i=tt3896198&apikey=a138c89b
+
+----------------------
