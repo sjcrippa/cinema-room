@@ -9,23 +9,21 @@ let getMovie = () => {
 
     // if input field is empty:
 
-    if(movieName.length <= 0) {
-        result.innerHTML = 
-        `
+    if (movieName.length <= 0) {
+        result.innerHTML =
+            `
             <h3 class="msg">Please enter a movie</h3>
         `;
     }
 
     // If input isn't empty:
-    else{
-        fetch(url)
-        .then((resp) => resp.json()) 
-        .then((data) =>{
+    else {
+        fetch(url).then((resp) => resp.json()).then((data) => {
 
             //if movie exist in database
-            if(data.Response == "True"){
-                result.innerHTML = 
-                `
+            if (data.Response == "True") {
+                result.innerHTML =
+                    `
                     <div class="info">
                         <img src=${data.Poster} class="poster"
                         <div>
@@ -43,29 +41,30 @@ let getMovie = () => {
                                 <div>${data.Genre.split(',').join("</div><div>")}</div>
                             </div>
                         </div>
+                    </div>
                         <h3>Plot:</h3>
                         <p>${data.Plot}</p>
                         <h3>Cast:</h3>
                         <p>${data.Actors}</p>
                 `;
-            }
+            } 
 
             //If movie doesn't exist in database
-            else{
+            else {
                 result.innerHTML =
-                `
+                    `
                 <h3 class="msg">${data.Error}</h3>
                 `;
             }
         })
 
-        //If error occurs
-        .catch(() =>{
-            result.innerHTML =
-            `
+            //If error occurs
+            .catch(() => {
+                result.innerHTML =
+                    `
             <h3 class="msg">Shit Happens</h3>
             `;
-        });
+            });
     }
 };
 
